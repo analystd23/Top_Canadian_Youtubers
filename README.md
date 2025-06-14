@@ -337,68 +337,68 @@ This shows the Top Candian Youtubers so far.
 
 ### 1. Total Subscribers (M)
 ```sql
-Total Subscribers (M) = 
-VAR million = 1000000
-VAR sumOfSubscribers = SUM(view_uk_youtubers_2024[total_subscribers])
-VAR totalSubscribers = DIVIDE(sumOfSubscribers,million)
+Total_subscribers (M) = 
+VAR Millions = 1000000
+VAR sumofsubscribers = SUM(cleaned_top100_canadian_youtubers[TOTAL_SUBS])
+VAR totalsubscribers = DIVIDE(sumofsubscribers, Millions)
 
-RETURN totalSubscribers
+RETURN totalsubscribers
 
 ```
 
 ### 2. Total Views (B)
 ```sql
-Total Views (B) = 
+Total_views (B) = 
 VAR billion = 1000000000
-VAR sumOfTotalViews = SUM(view_uk_youtubers_2024[total_views])
-VAR totalViews = ROUND(sumOfTotalViews / billion, 2)
+VAR sumoftoyalviews = SUM(cleaned_top100_canadian_youtubers[TOTAL_VIEWS])
+VAR totalviews = DIVIDE(sumoftoyalviews, billion)
 
-RETURN totalViews
+RETURN totalviews
 
 ```
 
 ### 3. Total Videos
 ```sql
-Total Videos = 
-VAR totalVideos = SUM(view_uk_youtubers_2024[total_videos])
+Total_vids = 
+VAR totalvideos = SUM(cleaned_top100_canadian_youtubers[TOTAL_VIDEOS])
 
-RETURN totalVideos
+RETURN totalvideos
 
 ```
 
 ### 4. Average Views Per Video (M)
 ```sql
-Average Views per Video (M) = 
-VAR sumOfTotalViews = SUM(view_uk_youtubers_2024[total_views])
-VAR sumOfTotalVideos = SUM(view_uk_youtubers_2024[total_videos])
-VAR  avgViewsPerVideo = DIVIDE(sumOfTotalViews,sumOfTotalVideos, BLANK())
-VAR finalAvgViewsPerVideo = DIVIDE(avgViewsPerVideo, 1000000, BLANK())
+Avg_views_Per/video (M) = 
+VAR sumoftotalviews = SUM(cleaned_top100_canadian_youtubers[TOTAL_VIEWS])
+VAR sumoftotalvideos = SUM(cleaned_top100_canadian_youtubers[TOTAL_VIDEOS])
+VAR averageviewsPervideo = DIVIDE(sumoftotalviews, sumoftotalvideos, BLANK())
+VAR finalaverageviewsPervideo = DIVIDE(averageviewsPervideo, 1000000, BLANK())
 
-RETURN finalAvgViewsPerVideo 
+RETURN finalaverageviewsPervideo
 
 ```
 
 
 ### 5. Subscriber Engagement Rate
 ```sql
-Subscriber Engagement Rate = 
-VAR sumOfTotalSubscribers = SUM(view_uk_youtubers_2024[total_subscribers])
-VAR sumOfTotalVideos = SUM(view_uk_youtubers_2024[total_videos])
-VAR subscriberEngRate = DIVIDE(sumOfTotalSubscribers, sumOfTotalVideos, BLANK())
+Subscriber_engagement_rate = 
+VAR sumoftotalsubcribers = SUM(cleaned_top100_canadian_youtubers[TOTAL_SUBS])
+VAR sumoftotalvideos = SUM(cleaned_top100_canadian_youtubers[TOTAL_VIDEOS])
+VAR subscriberEngagementRate = DIVIDE(sumoftotalsubcribers, sumoftotalvideos, BLANK())
 
-RETURN subscriberEngRate 
+RETURN subscriberEngagementRate
 
 ```
 
 
 ### 6. Views per subscriber
 ```sql
-Views Per Subscriber = 
-VAR sumOfTotalViews = SUM(view_uk_youtubers_2024[total_views])
-VAR sumOfTotalSubscribers = SUM(view_uk_youtubers_2024[total_subscribers])
-VAR viewsPerSubscriber = DIVIDE(sumOfTotalViews, sumOfTotalSubscribers, BLANK())
+viewsPerSubscriber = 
+VAR sumoftotalviews = SUM(cleaned_top100_canadian_youtubers[TOTAL_VIEWS])
+VAR sumoftotalsubscribers = SUM(cleaned_top100_canadian_youtubers[TOTAL_SUBS])
+VAR viewsPerSubscriber = DIVIDE(sumoftotalviews, sumoftotalsubscribers,BLANK())
 
-RETURN viewsPerSubscriber 
+RETURN viewsPerSubscriber
 
 ```
 
