@@ -4,7 +4,7 @@
 3. filter for groups with more than one row
 */
 
-SELECT channel_name, COUNT(*) AS duplicate_count  
+SELECT CHANNEL_NAME, COUNT(*) AS duplicate_count  
 FROM youtube_db.top_influencers  
-GROUP BY channel_name  
+GROUP BY CHANNEL_NAME  
 HAVING COUNT(*) > 1;
