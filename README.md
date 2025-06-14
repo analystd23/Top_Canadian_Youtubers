@@ -18,7 +18,6 @@
   - [Pseudocode](#pseudocode)
   - [Data Exploration](#data-exploration)
   - [Data Cleaning](#data-cleaning)
-  - [Transform the Data](#transform-the-data)
   - [Create the SQL View](#create-the-sql-view)
 - [Testing](#testing)
   - [Data Quality Tests](#data-quality-tests)
@@ -203,32 +202,6 @@ And here is a tabular representation of the expected schema for the clean data:
 
 
 
-
-
-
-
-### Transform the data 
-
-
-
-```sql
-/*
-# 1. Select the required columns
-# 2. Extract the channel name from the 'NOMBRE' column
-*/
-
--- 1.
-SELECT
-    SUBSTRING(NOMBRE, 1, CHARINDEX('@', NOMBRE) -1) AS channel_name,  -- 2.
-    total_subscribers,
-    total_views,
-    total_videos
-
-FROM
-    top_uk_youtubers_2024
-```
-
-
 ### Create the SQL view 
 
 ```sql
@@ -239,18 +212,18 @@ FROM
 */
 
 -- 1.
-CREATE VIEW view_uk_youtubers_2024 AS
+CREATE VIEW youtube_db.top_influencers AS
 
 -- 2.
 SELECT
-    CAST(SUBSTRING(NOMBRE, 1, CHARINDEX('@', NOMBRE) -1) AS VARCHAR(100)) AS channel_name, -- 2. 
-    total_subscribers,
-    total_views,
-    total_videos
+     CHANNEL_NAME,
+     TOTAL_VIEWS,
+     TOTAL_VIDEOS,
+     TOTAL_SUBS
 
 -- 3.
 FROM
-    top_uk_youtubers_2024
+    youtube_db.influencers
 
 ```
 
