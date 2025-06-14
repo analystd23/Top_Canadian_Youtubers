@@ -240,14 +240,14 @@ Here are the data quality tests conducted:
 # Count the total number of records (or rows) are in the SQL view
 */
 
-SELECT
-    COUNT(*) AS no_of_rows
-FROM
-    view_uk_youtubers_2024;
+select 
+     count(*) as Number_of_row
+from
+      youtube_db.top_influencers;
 
 ```
 
-![Row count check](assets/images/1_row_count_check.png)
+![Row count check](assets/images/Number_of_rows.png)
 
 
 
@@ -259,15 +259,16 @@ FROM
 */
 
 
-SELECT
-    COUNT(*) AS column_count
-FROM
-    INFORMATION_SCHEMA.COLUMNS
-WHERE
-    TABLE_NAME = 'view_uk_youtubers_2024'
+SELECT 
+      COUNT(*)  Number_of_columns
+FROM 
+     INFORMATION_SCHEMA.COLUMNS  
+WHERE 
+     TABLE_SCHEMA = 'youtube_db'  
+      AND TABLE_NAME = 'top_influencers';
 ```
 ### Output 
-![Column count check](assets/images/2_column_count_check.png)
+![Column count check](assets/images/Number_of_columns.png)
 
 
 
@@ -279,16 +280,17 @@ WHERE
 */
 
 -- 1.
-SELECT
-    COLUMN_NAME,
-    DATA_TYPE
-FROM
-    INFORMATION_SCHEMA.COLUMNS
+SELECT 
+      COLUMN_NAME,
+      DATA_TYPE  
+FROM 
+     INFORMATION_SCHEMA.COLUMNS  
 WHERE
-    TABLE_NAME = 'view_uk_youtubers_2024';
+      TABLE_SCHEMA = 'youtube_db'  
+      AND TABLE_NAME = 'top_influencers';
 ```
 ### Output
-![Data type check](assets/images/3_data_type_check.png)
+![Data type check](assets/images/Data_type.png)
 
 
 ## Duplicate count check
@@ -300,23 +302,24 @@ WHERE
 # 3. Filter for groups with more than one row
 */
 
+
 -- 1.
-SELECT
-    channel_name,
-    COUNT(*) AS duplicate_count
-FROM
-    view_uk_youtubers_2024
+SELECT 
+       CHANNEL_NAME, 
+       COUNT(*) AS duplicate_count  
+FROM 
+    youtube_db.top_influencers 
 
--- 2.
-GROUP BY
-    channel_name
+--2 
+GROUP BY 
+        CHANNEL_NAME 
 
--- 3.
-HAVING
-    COUNT(*) > 1;
+--3
+HAVING 
+      COUNT(*) > 1;
 ```
 ### Output
-![Duplicate count check](assets/images/4_duplicate_records_check.png)
+![Duplicate count check](assets/images/Duplicate_check.png)
 
 # Visualization 
 
@@ -325,9 +328,9 @@ HAVING
 
 - What does the dashboard look like?
 
-![GIF of Power BI Dashboard](assets/images/top_uk_youtubers_2024.gif)
+![GIF of Power BI Dashboard](assets/images/Top_100_Canadian_Youtubers.png)
 
-This shows the Top UK Youtubers in 2024 so far. 
+This shows the Top Candian Youtubers so far. 
 
 
 ## DAX Measures
