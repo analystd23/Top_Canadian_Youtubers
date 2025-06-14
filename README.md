@@ -41,12 +41,12 @@
 
 - What is the key pain point? 
 
-The Head of Marketing wants to find out who the top YouTubers are in 2024 to decide on which YouTubers would be best to run marketing campaigns throughout the rest of the year.
+The Head of Marketing wants to find out who the top YouTubers are to decide on which YouTubers would be best to run marketing campaigns throughout the rest of the year.
 
 
 - What is the ideal solution? 
 
-To create a dashboard that provides insights into the top UK YouTubers in 2024 that includes their 
+To create a dashboard that provides insights into the top Candian YouTubers that includes their 
 - subscriber count
 - total views
 - total videos, and
@@ -56,7 +56,7 @@ This will help the marketing team make informed decisions about which YouTubers 
 
 ## User story 
 
-As the Head of Marketing, I want to use a dashboard that analyses YouTube channel data in the UK . 
+As the Head of Marketing, I want to use a dashboard that analyses YouTube channel data in Canada . 
 
 This dashboard should allow me to identify the top performing channels based on metrics like subscriber base and average views. 
 
@@ -119,7 +119,7 @@ Some of the data visuals that may be appropriate in answering our questions incl
 
 
 
-![Dashboard-Mockup](assets/images/dashboard_mockup.png)
+![Dashboard-Mockup](assets/images/Mokkup.png)
 
 
 ## Tools 
