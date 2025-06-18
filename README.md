@@ -509,7 +509,7 @@ Campaign idea = product placement
 1. Justin Bieber  
 - Average views per video = 140 million
 - Product cost = $11
-- Potential units sold per video = 6.92 million x 4% conversion rate = 5,600,000 units sold
+- Potential units sold per video = 140 million x 4% conversion rate = 5,600,000 units sold
 - Potential revenue per video = 5,600,000 x $11 = $61,600,000
 - Campaign cost (one-time fee) = $6,000,000
 - **Net profit = $61,600,000 - $6,000,000 = $55,600,000**
@@ -530,7 +530,7 @@ c. The weekend
 - Potential units sold per video = 160.06 million x 4% conversion rate = 6,402,400 units sold
 - Potential revenue per video = 6,402,400 x $11 = $70,426,400
 - Campaign cost (one-time fee) = $6,000,000
-- **Net profit = $70,426,000 - $6,000,000 = $64,426,400**
+- **Net profit = $70,426,400 - $6,000,000 = $64,426,400**
 
 
 Best option from category: The weekend
@@ -595,34 +595,36 @@ LIMIT 3;
 
 Campaign idea = Influencer marketing 
 
-a. DanTDM
+a. Super Simple songs - Kid songs
 
-- Average views per video = 5.34 million
-- Product cost = $5
-- Potential units sold per video = 5.34 million x 2% conversion rate = 106,800 units sold
-- Potential revenue per video = 106,800 x $5 = $534,000
-- Campaign cost (3-month contract) = $130,000
-- **Net profit = $534,000 - $130,000 = $404,000**
+- Average views per video = 67.04 million
+- Product cost = $11
+- Potential units sold per video = 67.04 million x 4% conversion rate = 2,681,600 units sold
+- Potential revenue per video = 2,681,600 x $11 = $29,497,600
+- Campaign cost (5-month fee) = $900,000
+- **Net profit = $29,497,600 - $900,000 = $28,597,600**
 
-b. Dan Rhodes
+b. Justin Bieber 
+ 
+- Average views per video = 140 million
+- Product cost = $11
+- Potential units sold per video = 140 million x 4% conversion rate = 5,600,000 units sold
+- Potential revenue per video = 5,600,000 x $11 = $61,600,000
+- Campaign cost (5-month contract) = $900,000
+- **Net profit = $61,600,000 - $900,000 = $60,100,000**
 
-- Average views per video = 11.15 million
-- Product cost = $5
-- Potential units sold per video = 11.15 million x 2% conversion rate = 223,000 units sold
-- Potential revenue per video = 223,000 x $5 = $1,115,000
-- Campaign cost (3-month contract) = $130,000
-- **Net profit = $1,115,000 - $130,000 = $985,000**
 
-c. Mister Max
+c. The weekend
 
-- Average views per video = 14.06 million
-- Product cost = $5
-- Potential units sold per video = 14.06 million x 2% conversion rate = 281,200 units sold
-- Potential revenue per video = 281,200 x $5 = $1,406,000
-- Campaign cost (3-month contract) = $130,000
-- **Net profit = $1,406,000 - $130,000 = $1,276,000**
+- Average views per video = 160.06 million
+- Product cost = $11
+- Potential units sold per video = 160.06 million x 4% conversion rate = 6,402,400 units sold
+- Potential revenue per video = 6,402,400 x $11 = $70,426,400
+- Campaign cost (5-month fee) = $900,000
+- **Net profit = $70,426,000 - $900,000 = $69,526,400**
 
-Best option from category: Mister Max
+
+Best option from category: The weekend
 
 
 
@@ -639,49 +641,45 @@ Best option from category: Mister Max
 
 
 -- 1.
-DECLARE @conversionRate FLOAT = 0.02;        -- The conversion rate @ 2%
-DECLARE @productCost MONEY = 5.0;            -- The product cost @ $5
-DECLARE @campaignCost MONEY = 130000.0;      -- The campaign cost @ $130,000
+SET @conversionRate = 0.04;  -- The conversation rate 4%
+SET @productCost = 11.00; -- The product Cost @ 11 dollars
+SET @campaignCost = 900000.00; -- The Campaign cost @ 900 thousand 
 
 
 
 -- 2.
-WITH ChannelData AS (
-    SELECT
-        channel_name,
-        total_views,
-        total_videos,
-        ROUND(CAST(total_views AS FLOAT) / total_videos, -4) AS avg_views_per_video
-    FROM
-        youtube_db.dbo.view_uk_youtubers_2024
+WITH channel_data AS (
+    SELECT 
+        CHANNEL_NAME,
+        TOTAL_VIEWS,
+        TOTAL_VIDEOS,
+        ROUND(CAST(TOTAL_VIEWS AS FLOAT) / TOTAL_VIDEOS, -4) AS rounded_avg_views_per_videos,
+        CEIL(TOTAL_VIEWS/TOTAL_VIDEOS) as original_avg_views_per_videos
+    FROM youtube_db.top_influencers
 )
 
 
 -- 3.
-SELECT
-    channel_name,
-    avg_views_per_video,
-    (avg_views_per_video * @conversionRate) AS potential_units_sold_per_video,
-    (avg_views_per_video * @conversionRate * @productCost) AS potential_revenue_per_video,
-    (avg_views_per_video * @conversionRate * @productCost) - @campaignCost AS net_profit
-FROM
-    ChannelData
+SELECT 
+CHANNEL_NAME,
+rounded_avg_views_per_videos,
+(rounded_avg_views_per_videos * @ConversionRate) as Potential_units_sold_per_video,
+(rounded_avg_views_per_videos * @ConversionRate * @productCost) as Potential_revenue_per_video,
+(rounded_avg_views_per_videos * @ConversionRate * @productCost) - @campaignCost as net_profit 
 
+FROM channel_data
 
--- 4.
-WHERE
-    channel_name IN ('Mister Max', 'DanTDM', 'Dan Rhodes')
+-- 4 & 5
 
+ORDER BY TOTAL_VIEWS DESC
+LIMIT 3;
 
--- 5.
-ORDER BY
-    net_profit DESC;
 
 ```
 
 #### Output
 
-![Most views](assets/images/youtubers_with_the_most_views.png)
+![Most views](assets/images/Youtuber_with_most_views.png)
 
 
 
@@ -692,10 +690,18 @@ ORDER BY
 We discovered that 
 
 
-1. NoCopyrightSOunds, Dan Rhodes and DanTDM are the channnels with the most subscribers in the UK
-2. GRM Daily, Man City and Yogscast are the channels with the most videos uploaded
-3. DanTDM, Dan RHodes and Mister Max are the channels with the most views
-4. Entertainment channels are useful for broader reach, as the channels posting consistently on their platforms and generating the most engagement are focus on entertainment and music 
+1. Subscriber-heavy channels (Justin Bieber, Super Simple Songs, The Weeknd)
+- High subscriber count suggests strong audience loyalty and lasting popularity.
+- However, engagement depends on how often these subscribers actually watch videos. If views per subscriber are low, it could indicate passive fandom rather than active content consumption.
+- Music channels often spike in engagement when new albums or singles drop, but sustained interaction can be tricky unless content is continuously refreshed (e.g., live performances, interviews, or behind-the-scenes content).
+2. Most uploaded videos (Global News, WatchMojo.com, Step News Agency)
+- News and entertainment channels thrive on frequent updates, meaning engagement can come from routine viewers rather than dedicated fans.
+- Volume vs. depth: Channels that post often can have lower average engagement per video, since content gets spread across a wide catalog.
+- If subscriber numbers are lower compared to views, it may indicate non-subscribers driving engagement—meaning people find their videos via search or recommendations rather than subscribing.
+3. Most viewed channels (Super Simple Songs, Justin Bieber, The Weeknd)
+- High view counts imply widespread audience reach, but the key question is who is watching—loyal fans or casual viewers?
+- Super Simple Songs likely benefits from repeat watches (kids watching the same content multiple times), whereas artists like Justin Bieber and The Weeknd get spikes from major releases followed by potential drop-offs.
+- Virality vs. retention: High views don’t always mean high engagement. If viewers don't comment, like, or subscribe, engagement remains shallow.
 
 
 
@@ -704,34 +710,179 @@ We discovered that
 
 - What do you recommend based on the insights gathered? 
   
-1. Dan Rhodes is the best YouTube channel to collaborate with if we want to maximize visbility because this channel has the most YouTube subscribers in the UK
-2. Although GRM Daily, Man City and Yogcasts are regular publishers on YouTube, it may be worth considering whether collaborating with them with the current budget caps are worth the effort, as the potential return on investments is significantly lower compared to the other channels.
-3. Mister Max is the best YouTuber to collaborate with if we're interested in maximizing reach, but collaborating with DanTDM and Dan Rhodes may be better long-term options considering the fact that they both have large subscriber bases and are averaging significantly high number of views.
-4. The top 3 channels to form collaborations with are NoCopyrightSounds, DanTDM and Dan Rhodes based on this analysis, because they attract the most engagement on their channels consistently.
+a. Prioritize The Weeknd for Campaigns
+Both in terms of views and subscribers, The Weeknd offers the highest potential net profit and ROI for both influencer marketing and product placement campaigns. His audience is large, engaged, and his content consistently draws high viewership.
+b. Consider Justin Bieber as a Strong Alternative
+Justin Bieber also provides a high ROI, especially for influencer marketing, and has a massive, loyal fanbase. He’s a solid backup or secondary option if The Weeknd is unavailable or if you want to diversify.
+c. Use Super Simple Songs for Family/Kids Products
+While the net profit is lower, Super Simple Songs is ideal for products targeting families or children. The repeat viewership and high engagement from parents make it a good fit for certain brands.
+d. Avoid High-Volume News/Entertainment Channels for Direct Sales
+Channels like Global News or WatchMojo.com may have high upload frequency and views, but engagement is spread thin, and their audiences are less likely to convert for product sales.
 
 
 ### Potential ROI 
-- What ROI do we expect if we take this course of action?
+Certainly! Here’s a more **extensive analysis of the potential ROI** for each channel, including deeper insights into what drives the numbers, risk factors, and what could influence actual returns.
 
-1. Setting up a collaboration deal with Dan Rhodes would make the client a net profit of $1,065,000 per video
-2. An influencer marketing contract with Mister Max can see the client generate a net profit of $1,276,000
-3. If we go with a product placement campaign with DanTDM, this could  generate the client approximately $484,000 per video. If we advance with an influencer marketing campaign deal instead, this would make the client a one-off net profit of $404,000.
-4. NoCopyrightSounds could profit the client $642,000 per video too (which is worth considering) 
+---
+
+#### **Potential ROI: Detailed Analysis**
+
+##### **1. The Weeknd**
+
+###### **Influencer Marketing**
+- **Net Profit:** $69,526,400  
+- **Campaign Cost:** $900,000  
+- **ROI:**  
+  \[
+  \text{ROI} = \frac{\text{Net Profit}}{\text{Campaign Cost}} \times 100 = \frac{69,526,400}{900,000} \times 100 \approx 7,725\%
+  \]
+- **Drivers:**  
+  - Exceptionally high average views per video (160.06M).
+  - Strong global fanbase, high engagement during album/single releases.
+  - Music content is highly shareable and repeatable.
+- **Risks:**  
+  - Engagement may spike only during new releases.
+  - Audience may be less receptive to non-music product placements.
+  - Brand fit is crucial—misalignment can reduce conversion.
+
+###### **Product Placement**
+- **Net Profit:** $64,426,400  
+- **Campaign Cost:** $6,000,000  
+- **ROI:**  
+  \[
+  \text{ROI} = \frac{64,426,400}{6,000,000} \times 100 \approx 1,073\%
+  \]
+- **Drivers:**  
+  - High visibility, especially if integrated into music videos or behind-the-scenes content.
+  - Potential for viral moments if the product is creatively featured.
+- **Risks:**  
+  - One-time fee is much higher, so campaign must be well-timed.
+  - If the product placement is too subtle or not well-integrated, conversion may drop.
+
+---
+
+##### **2. Justin Bieber**
+
+###### **Influencer Marketing**
+- **Net Profit:** $60,100,000  
+- **Campaign Cost:** $900,000  
+- **ROI:**  
+  \[
+  \text{ROI} = \frac{60,100,000}{900,000} \times 100 \approx 6,678\%
+  \]
+- **Drivers:**  
+  - Massive, loyal subscriber base.
+  - High average views (140M) per video.
+  - Strong social media presence for cross-promotion.
+- **Risks:**  
+  - Audience may be younger, with less purchasing power for certain products.
+  - Engagement can fluctuate based on public image and media coverage.
+
+###### **Product Placement**
+- **Net Profit:** $55,600,000  
+- **Campaign Cost:** $6,000,000  
+- **ROI:**  
+  \[
+  \text{ROI} = \frac{55,600,000}{6,000,000} \times 100 \approx 927\%
+  \]
+- **Drivers:**  
+  - High likelihood of trending content.
+  - Potential for global reach.
+- **Risks:**  
+  - High upfront cost.
+  - Product must resonate with Bieber’s brand and audience.
+
+---
+
+##### **3. Super Simple Songs**
+
+###### **Influencer Marketing**
+- **Net Profit:** $28,597,600  
+- **Campaign Cost:** $900,000  
+- **ROI:**  
+  \[
+  \text{ROI} = \frac{28,597,600}{900,000} \times 100 \approx 3,177\%
+  \]
+- **Drivers:**  
+  - Repeat viewership from children (high frequency of replays).
+  - Parents are the buyers—potential for high conversion on family/kids products.
+- **Risks:**  
+  - Product must be child/family-appropriate.
+  - Regulatory and ethical considerations for marketing to children.
+
+###### **Product Placement**
+- **Net Profit:** $23,497,600  
+- **Campaign Cost:** $6,000,000  
+- **ROI:**  
+  \[
+  \text{ROI} = \frac{23,497,600}{6,000,000} \times 100 \approx 392\%
+  \]
+- **Drivers:**  
+  - High trust from parents.
+  - Opportunity for long-term brand loyalty if product is well-received.
+- **Risks:**  
+  - Lower overall reach compared to music megastars.
+  - Must comply with strict advertising standards for children.
+
+---
+
+#### **Key Factors Influencing Actual ROI**
+
+- **Conversion Rate Assumptions:**  
+  The 4% conversion rate is optimistic; actual rates may vary by product, campaign quality, and audience fit.
+- **Product-Channel Fit:**  
+  ROI is maximized when the product aligns with the channel’s audience and content style.
+- **Campaign Timing:**  
+  Launching during high-engagement periods (album drops, holidays, etc.) can boost ROI.
+- **Creative Execution:**  
+  Well-integrated, authentic campaigns outperform generic ads.
+- **Market Saturation:**  
+  If the audience is frequently exposed to similar campaigns, conversion rates may drop.
+- **Regulatory Risks:**  
+  Especially for children’s content, compliance is critical to avoid legal issues.
+
+---
+
+#### **Summary Table**
+
+| Channel             | Campaign Type     | Net Profit      | Cost         | ROI (%)  |
+|---------------------|-------------------|-----------------|--------------|----------|
+| The Weeknd          | Influencer        | $69,526,400     | $900,000     | 7,725    |
+| The Weeknd          | Product Placement | $64,426,400     | $6,000,000   | 1,073    |
+| Justin Bieber       | Influencer        | $60,100,000     | $900,000     | 6,678    |
+| Justin Bieber       | Product Placement | $55,600,000     | $6,000,000   | 927      |
+| Super Simple Songs  | Influencer        | $28,597,600     | $900,000     | 3,177    |
+| Super Simple Songs  | Product Placement | $23,497,600     | $6,000,000   | 392      |
+
+---
+
+**In summary:**  
+- The Weeknd offers the highest ROI, especially for influencer campaigns.
+- Justin Bieber is a strong alternative with slightly lower, but still excellent, ROI.
+- Super Simple Songs is best for family/kids products, with lower but still substantial ROI.
+- Actual ROI will depend on campaign execution, product fit, and market conditions.
 
 
 
 
-### Action plan
-- What course of action should we take and why?
+###  Action plan
+To maximize the return on investment (ROI) from YouTube influencer and product placement campaigns, it is essential to strategically select channels that align with our brand goals, audience, and product offerings. Our analysis of top-performing YouTube channels—based on subscribers, views, and engagement—reveals clear opportunities for high-impact marketing initiatives. By focusing on channels with proven reach and engagement, and by tailoring our approach to each channel’s unique audience, we can optimize both immediate sales and long-term brand growth.
 
-Based on our analysis, we beieve the best channel to advance a long-term partnership deal with to promote the client's products is the Dan Rhodes channel. 
+The following action steps outline our recommended approach to executing successful campaigns, ensuring that we leverage the strengths of each channel while mitigating potential risks and maximizing overall effectiveness.
 
-We'll have conversations with the marketing client to forecast what they also expect from this collaboration. Once we observe we're hitting the expected milestones, we'll advance with potential partnerships with DanTDM, Mister Max and NoCopyrightSounds channels in the future.   
-
-- What steps do we take to implement the recommended decisions effectively?
-
-
-1. Reach out to the teams behind each of these channels, starting with Dan Rhodes
-2. Negotiate contracts within the budgets allocated to each marketing campaign
-3. Kick off the campaigns and track each of their performances against the KPIs
-4. Review how the campaigns have gone, gather insights and optimize based on feedback from converted customers and each channel's audiences 
+a. Secure Partnership with The Weeknd
+Initiate negotiations for both influencer marketing and product placement.
+Prepare creative concepts that align with his brand and audience.
+Plan for campaign launches around new music releases for maximum engagement.
+b. Develop a Contingency Plan with Justin Bieber
+Reach out to his management as a secondary option.
+Tailor campaign messaging to his audience’s interests and engagement patterns.
+c. Target Super Simple Songs for Family/Kids Products
+Design campaigns specifically for parents and children.
+Leverage the channel’s repeat viewership for ongoing product exposure.
+d. Monitor Engagement Metrics
+Track not just views, but likes, comments, and shares to gauge true engagement.
+Adjust campaign spend and creative based on real-time performance data.
+e. Avoid Over-Saturating with News/Entertainment Channels
+Use these channels for brand awareness, not direct sales.
+Focus on short, high-impact campaigns rather than long-term product placements.
