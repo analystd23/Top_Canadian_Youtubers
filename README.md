@@ -732,10 +732,7 @@ Certainly! Here’s a more **extensive analysis of the potential ROI** for each 
 ###### **Influencer Marketing**
 - **Net Profit:** $69,526,400  
 - **Campaign Cost:** $900,000  
-- **ROI:**  
-  \[
-  \text{ROI} = \frac{\text{Net Profit}}{\text{Campaign Cost}} \times 100 = \frac{69,526,400}{900,000} \times 100 \approx 7,725\%
-  \]
+- **ROI:** 7,725%
 - **Drivers:**  
   - Exceptionally high average views per video (160.06M).
   - Strong global fanbase, high engagement during album/single releases.
@@ -748,10 +745,7 @@ Certainly! Here’s a more **extensive analysis of the potential ROI** for each 
 ###### **Product Placement**
 - **Net Profit:** $64,426,400  
 - **Campaign Cost:** $6,000,000  
-- **ROI:**  
-  \[
-  \text{ROI} = \frac{64,426,400}{6,000,000} \times 100 \approx 1,073\%
-  \]
+- **ROI:** 1,073%
 - **Drivers:**  
   - High visibility, especially if integrated into music videos or behind-the-scenes content.
   - Potential for viral moments if the product is creatively featured.
@@ -766,10 +760,7 @@ Certainly! Here’s a more **extensive analysis of the potential ROI** for each 
 ###### **Influencer Marketing**
 - **Net Profit:** $60,100,000  
 - **Campaign Cost:** $900,000  
-- **ROI:**  
-  \[
-  \text{ROI} = \frac{60,100,000}{900,000} \times 100 \approx 6,678\%
-  \]
+- **ROI:** 6,678%
 - **Drivers:**  
   - Massive, loyal subscriber base.
   - High average views (140M) per video.
@@ -781,10 +772,7 @@ Certainly! Here’s a more **extensive analysis of the potential ROI** for each 
 ###### **Product Placement**
 - **Net Profit:** $55,600,000  
 - **Campaign Cost:** $6,000,000  
-- **ROI:**  
-  \[
-  \text{ROI} = \frac{55,600,000}{6,000,000} \times 100 \approx 927\%
-  \]
+- **ROI:** 927%
 - **Drivers:**  
   - High likelihood of trending content.
   - Potential for global reach.
@@ -799,10 +787,7 @@ Certainly! Here’s a more **extensive analysis of the potential ROI** for each 
 ###### **Influencer Marketing**
 - **Net Profit:** $28,597,600  
 - **Campaign Cost:** $900,000  
-- **ROI:**  
-  \[
-  \text{ROI} = \frac{28,597,600}{900,000} \times 100 \approx 3,177\%
-  \]
+- **ROI:** 3,177%
 - **Drivers:**  
   - Repeat viewership from children (high frequency of replays).
   - Parents are the buyers—potential for high conversion on family/kids products.
@@ -813,10 +798,7 @@ Certainly! Here’s a more **extensive analysis of the potential ROI** for each 
 ###### **Product Placement**
 - **Net Profit:** $23,497,600  
 - **Campaign Cost:** $6,000,000  
-- **ROI:**  
-  \[
-  \text{ROI} = \frac{23,497,600}{6,000,000} \times 100 \approx 392\%
-  \]
+- **ROI:** 392%
 - **Drivers:**  
   - High trust from parents.
   - Opportunity for long-term brand loyalty if product is well-received.
