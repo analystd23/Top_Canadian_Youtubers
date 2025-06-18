@@ -712,10 +712,13 @@ We discovered that
   
 a. Prioritize The Weeknd for Campaigns
 Both in terms of views and subscribers, The Weeknd offers the highest potential net profit and ROI for both influencer marketing and product placement campaigns. His audience is large, engaged, and his content consistently draws high viewership.
+
 b. Consider Justin Bieber as a Strong Alternative
 Justin Bieber also provides a high ROI, especially for influencer marketing, and has a massive, loyal fanbase. He’s a solid backup or secondary option if The Weeknd is unavailable or if you want to diversify.
+
 c. Use Super Simple Songs for Family/Kids Products
 While the net profit is lower, Super Simple Songs is ideal for products targeting families or children. The repeat viewership and high engagement from parents make it a good fit for certain brands.
+
 d. Avoid High-Volume News/Entertainment Channels for Direct Sales
 Channels like Global News or WatchMojo.com may have high upload frequency and views, but engagement is spread thin, and their audiences are less likely to convert for product sales.
 
@@ -856,15 +859,19 @@ a. Secure Partnership with The Weeknd
 Initiate negotiations for both influencer marketing and product placement.
 Prepare creative concepts that align with his brand and audience.
 Plan for campaign launches around new music releases for maximum engagement.
+
 b. Develop a Contingency Plan with Justin Bieber
 Reach out to his management as a secondary option.
 Tailor campaign messaging to his audience’s interests and engagement patterns.
+
 c. Target Super Simple Songs for Family/Kids Products
 Design campaigns specifically for parents and children.
 Leverage the channel’s repeat viewership for ongoing product exposure.
+
 d. Monitor Engagement Metrics
 Track not just views, but likes, comments, and shares to gauge true engagement.
 Adjust campaign spend and creative based on real-time performance data.
+
 e. Avoid Over-Saturating with News/Entertainment Channels
 Use these channels for brand awareness, not direct sales.
 Focus on short, high-impact campaigns rather than long-term product placements.
